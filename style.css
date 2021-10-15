@@ -1,0 +1,15 @@
+.outer {
+    visibility: hidden;
+}
+#slide1:checked ~ #box1 {
+    visibility: visible;
+}
+#slide2:checked ~ #box2 {
+    visibility: visible;
+}
+#slide3:checked ~ #box3 {
+    visibility: visible;
+}
+#slide4:checked ~ #box4 {
+    visibility: visible;
+}
