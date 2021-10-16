@@ -11,6 +11,7 @@ html {
     height: 100%;
 }
 body {
+    margin: 0 auto;
     width: 90%;
     height: 100%;
     display: flex;
@@ -169,4 +170,16 @@ h2 {
 #slide4:checked:hover ~ .bullets > #label4::before {
     background-color: transparent;
     border: var(--bullet-checked-color) solid 3px;
+}
+
+@media screen and (max-width: 768px){
+    .memes {
+        grid-template-columns: 100%;
+        grid-template-areas: "mem" "bullets" "description";
+        justify-items: center;
+    }
+    footer {
+        flex-direction: column;
+        align-items: center;
+    }
 }
