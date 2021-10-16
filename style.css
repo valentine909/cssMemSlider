@@ -67,26 +67,40 @@ label::before {
     border-radius: 50%;
 }
 
-#box {
+.image-container {
+    display: none;
     grid-area: mem;
     border-radius: 10px;
     width: 100%;
     height: 0;
     padding-top: calc(100% * 6 / 8);
+    animation: bg-move 0.3s forwards;
 }
-#slide1:checked ~ #box {
+@keyframes bg-move {
+    from {
+        transform: translateX(-100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+#slide1:checked ~ #box1 {
+    display: block;
     background: url("img/1.jpg") no-repeat center;
     background-size: contain;
 }
-#slide2:checked ~ #box {
+#slide2:checked ~ #box2 {
+    display: block;
     background: url("img/2.jpg") no-repeat center;
     background-size: contain;
 }
-#slide3:checked ~ #box {
+#slide3:checked ~ #box3 {
+    display: block;
     background: url("img/3.jpg") no-repeat center;
     background-size: contain;
 }
-#slide4:checked ~ #box {
+#slide4:checked ~ #box4 {
+    display: block;
     background: url("img/4.jpg") no-repeat center;
     background-size: contain;
 }
@@ -96,18 +110,24 @@ label::before {
 }
 h2 {
     display: none;
+    pointer-events: none;
+    animation: bg-move 0.3s forwards;
 }
 #slide1:checked ~ .desc > #text1 {
     display: block;
+    transform: translateX(0%);
 }
 #slide2:checked ~ .desc > #text2 {
     display: block;
+    transform: translateX(0%);
 }
 #slide3:checked ~ .desc > #text3 {
     display: block;
+    transform: translateX(0%);
 }
 #slide4:checked ~ .desc > #text4 {
     display: block;
+    transform: translateX(0%);
 }
 
 .bullets {
