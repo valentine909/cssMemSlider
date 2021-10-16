@@ -1,50 +1,45 @@
+:root {
+    --bullet-default-color: #826db0;
+    --bullet-checked-color: #f6927a;
+    --bgc: #666;
+}
+html {
+    color: antiquewhite;
+    background-color: var(--bgc);
+}
+
 .memes {
     margin: 0 auto;
-    max-width: 1440px;
+    max-width: 800px;
     display: grid;
-    grid-template-columns: 80% repeat(4, 4%);
+    grid-template-columns: 80% 20%;
     grid-template-rows: max-content max-content;
-    grid-template-areas: "mem mem mem mem mem" "description bull1 bull2 bull3 bull4";
+    grid-template-areas: "mem mem" "description bullets";
     align-items: center;
 }
-.outer {
-    visibility: hidden;
-}
-#slide1, #label1 {
-    grid-area: bull1;
-}
-#slide2, #label2 {
-    grid-area: bull2;
-}
-#slide3, #label3 {
-    grid-area: bull3;
-}
-#slide4, #label4 {
-    grid-area: bull4;
-}
 .my-slide {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    justify-self: right;
-    width: 33%;
-    height: 33%;
-    margin-right: 33%;
+    display: none;
 }
 label {
     display: flex;
+    flex: 0 0 auto;
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    height: 45px;
+    height: 35px;
+    width: 35px;
 }
 label::before {
     box-sizing: border-box;
     content: "";
     width: 15px;
     height: 15px;
-    background-color: #1C0C5B;
+    background-color: var(--bullet-default-color);
     border-radius: 50%;
+}
+#box {
+    grid-area: mem;
+    border-radius: 10px;
 }
 #slide1:checked ~ #box {
     visibility: visible;
@@ -56,6 +51,11 @@ label::before {
 }
 #slide2:checked ~ #box {
     visibility: visible;
+    background: url("img/2.jpeg") no-repeat;
+    background-size: contain;
+    width: 100%;
+    height: 0;
+    padding-top: calc(100% * 285 / 480);
 }
 #slide3:checked ~ #box {
     visibility: visible;
@@ -66,17 +66,30 @@ label::before {
 p {
     grid-area: description;
 }
-#box {
-    grid-area: mem;
+
+.bullets {
+    grid-area: bullets;
+    display: flex;
+    gap: 5px;
+    justify-content: flex-end;
 }
-.my-slide:checked + label::before {
+#slide1:checked ~ .bullets > #label1::before,
+#slide2:checked ~ .bullets > #label2::before,
+#slide3:checked ~ .bullets > #label3::before,
+#slide4:checked ~ .bullets > #label4::before {
     background-color: transparent;
-    border: #1C0C5B solid 3px;
+    border: var(--bullet-default-color) solid 3px;
 }
-.my-slide:hover + label::before {
-    background-color: #C996CC;
+#slide1:hover ~ .bullets > #label1::before,
+#slide2:hover ~ .bullets > #label2::before,
+#slide3:hover ~ .bullets > #label3::before,
+#slide4:hover ~ .bullets > #label4::before {
+    background-color: var(--bullet-checked-color);
 }
-.my-slide:checked:hover + label::before {
+#slide1:checked:hover ~ .bullets > #label1::before,
+#slide2:checked:hover ~ .bullets > #label2::before,
+#slide3:checked:hover ~ .bullets > #label3::before,
+#slide4:checked:hover ~ .bullets > #label4::before {
     background-color: transparent;
-    border: #C996CC solid 3px;
+    border: var(--bullet-checked-color) solid 3px;
 }
