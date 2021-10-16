@@ -1,15 +1,44 @@
+.memes {
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 80% repeat(4, 3%);
+    grid-template-rows: auto;
+    grid-template-areas: "mem mem mem mem mem" "description bull1 bull2 bull3 bull4";
+    align-items: center;
+}
 .outer {
     visibility: hidden;
 }
-#slide1:checked ~ #box1 {
+#slide1 {
+    grid-area: bull1;
+}
+#slide2 {
+    grid-area: bull2;
+}
+#slide3 {
+    grid-area: bull3;
+}
+#slide4 {
+    grid-area: bull4;
+}
+.my-slide {
+    justify-self: right;
+}
+#slide1:checked ~ #box {
     visibility: visible;
 }
-#slide2:checked ~ #box2 {
+#slide2:checked ~ #box {
     visibility: visible;
 }
-#slide3:checked ~ #box3 {
+#slide3:checked ~ #box {
     visibility: visible;
 }
-#slide4:checked ~ #box4 {
+#slide4:checked ~ #box {
     visibility: visible;
+}
+p {
+    grid-area: description;
+}
+#box {
+    grid-area: mem;
 }
