@@ -17,6 +17,7 @@ html {
     grid-template-areas: "mem mem" "description bullets";
     align-items: center;
 }
+
 .my-slide {
     display: none;
 }
@@ -37,34 +38,52 @@ label::before {
     background-color: var(--bullet-default-color);
     border-radius: 50%;
 }
+
 #box {
     grid-area: mem;
     border-radius: 10px;
+    width: 100%;
+    height: 0;
+    padding-top: calc(100% * 600 / 800);
+}
+.my-slide:checked ~ #box {
+    visibility: visible;
+
 }
 #slide1:checked ~ #box {
-    visibility: visible;
-    background: url("img/1.png") no-repeat;
+    background: url("img/1.jpg") no-repeat center;
     background-size: contain;
-    width: 100%;
-    height: 0;
-    padding-top: calc(100% * 741 / 906);
 }
 #slide2:checked ~ #box {
-    visibility: visible;
-    background: url("img/2.jpeg") no-repeat;
+    background: url("img/2.jpg") no-repeat center;
     background-size: contain;
-    width: 100%;
-    height: 0;
-    padding-top: calc(100% * 285 / 480);
 }
 #slide3:checked ~ #box {
-    visibility: visible;
+    background: url("img/3.jpg") no-repeat center;
+    background-size: contain;
 }
 #slide4:checked ~ #box {
-    visibility: visible;
+    background: url("img/4.jpg") no-repeat center;
+    background-size: contain;
 }
-p {
+
+.desc {
     grid-area: description;
+}
+h2 {
+    display: none;
+}
+#slide1:checked ~ .desc > #text1 {
+    display: block;
+}
+#slide2:checked ~ .desc > #text2 {
+    display: block;
+}
+#slide3:checked ~ .desc > #text3 {
+    display: block;
+}
+#slide4:checked ~ .desc > #text4 {
+    display: block;
 }
 
 .bullets {
@@ -80,12 +99,14 @@ p {
     background-color: transparent;
     border: var(--bullet-default-color) solid 3px;
 }
+
 #slide1:hover ~ .bullets > #label1::before,
 #slide2:hover ~ .bullets > #label2::before,
 #slide3:hover ~ .bullets > #label3::before,
 #slide4:hover ~ .bullets > #label4::before {
     background-color: var(--bullet-checked-color);
 }
+
 #slide1:checked:hover ~ .bullets > #label1::before,
 #slide2:checked:hover ~ .bullets > #label2::before,
 #slide3:checked:hover ~ .bullets > #label3::before,
