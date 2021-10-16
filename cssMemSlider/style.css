@@ -1,6 +1,7 @@
 :root {
     --bullet-default-color: #826db0;
     --bullet-checked-color: #f6927a;
+    --bullet-active-color: #aaa;
     --bgc: #666;
 }
 html {
@@ -149,6 +150,17 @@ h2 {
 #slide3:hover ~ .bullets > #label3::before,
 #slide4:hover ~ .bullets > #label4::before {
     background-color: var(--bullet-checked-color);
+}
+
+#slide1:focus ~ .bullets > #label1::before,
+#slide2:focus ~ .bullets > #label2::before,
+#slide3:focus ~ .bullets > #label3::before,
+#slide4:focus ~ .bullets > #label4::before,
+#slide1:active ~ .bullets > #label1::before,
+#slide2:active ~ .bullets > #label2::before,
+#slide3:active ~ .bullets > #label3::before,
+#slide4:active ~ .bullets > #label4::before{
+    background-color: var(--bullet-active-color);
 }
 
 #slide1:checked:hover ~ .bullets > #label1::before,
