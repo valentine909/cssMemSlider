@@ -6,11 +6,39 @@
 html {
     color: antiquewhite;
     background-color: var(--bgc);
+    width: 100%;
+    height: 100%;
 }
-
+body {
+    width: 90%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+h1 {
+    visibility: hidden;
+    height: 0;
+    width: 0;
+}
+footer {
+    margin: 0 auto;
+    max-width: 100vh;
+    width: 100%;
+    display: flex;
+    gap: 20%;
+    justify-content: space-between;
+}
+a {
+    text-decoration: none;
+    color: inherit;
+}
+a:hover {
+    text-decoration: underline;
+}
 .memes {
     margin: 0 auto;
-    max-width: 800px;
+    max-width: 100vh;
     display: grid;
     grid-template-columns: 80% 20%;
     grid-template-rows: max-content max-content;
@@ -44,11 +72,7 @@ label::before {
     border-radius: 10px;
     width: 100%;
     height: 0;
-    padding-top: calc(100% * 600 / 800);
-}
-.my-slide:checked ~ #box {
-    visibility: visible;
-
+    padding-top: calc(100% * 6 / 8);
 }
 #slide1:checked ~ #box {
     background: url("img/1.jpg") no-repeat center;
