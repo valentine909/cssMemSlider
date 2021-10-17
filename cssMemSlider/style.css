@@ -1,0 +1,187 @@
+:root {
+    --bullet-default-color: #826db0;
+    --bullet-checked-color: #f6927a;
+    --bullet-active-color: #aaa;
+    --bgc: #666;
+}
+html {
+    color: antiquewhite;
+    background-color: var(--bgc);
+    width: 100%;
+    height: 100%;
+}
+body {
+    margin: 0 auto;
+    width: 90%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+h1 {
+    text-align: center;
+    margin-top: 5vh;
+}
+footer {
+    margin: 0 auto;
+    max-width: 100vh;
+    width: 100%;
+    display: flex;
+    gap: 20%;
+    justify-content: space-between;
+}
+a {
+    text-decoration: none;
+    color: inherit;
+}
+a:hover {
+    text-decoration: underline;
+}
+.memes {
+    margin: 0 auto;
+    max-width: 100vh;
+    display: grid;
+    grid-template-columns: 80% 20%;
+    grid-template-rows: max-content max-content;
+    grid-template-areas: "mem mem" "description bullets";
+    align-items: center;
+}
+
+.my-slide {
+    display: none;
+}
+label {
+    display: flex;
+    flex: 0 0 auto;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    height: 2rem;
+    width: 2rem;
+}
+label::before {
+    box-sizing: border-box;
+    content: "";
+    width: 1rem;
+    height: 1rem;
+    background-color: var(--bullet-default-color);
+    border-radius: 50%;
+}
+
+.image-container {
+    display: none;
+    grid-area: mem;
+    border-radius: 0.5rem;
+    width: 100%;
+    height: 0;
+    padding-top: calc(100% * 6 / 8);
+    animation: bg-move 0.3s forwards;
+}
+@keyframes bg-move {
+    from {
+        transform: translateX(-100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+#slide1:checked ~ #box1 {
+    display: block;
+    background: url("img/1.jpg") no-repeat center;
+    background-size: contain;
+}
+#slide2:checked ~ #box2 {
+    display: block;
+    background: url("img/2.jpg") no-repeat center;
+    background-size: contain;
+}
+#slide3:checked ~ #box3 {
+    display: block;
+    background: url("img/3.jpg") no-repeat center;
+    background-size: contain;
+}
+#slide4:checked ~ #box4 {
+    display: block;
+    background: url("img/4.jpg") no-repeat center;
+    background-size: contain;
+}
+
+.desc {
+    grid-area: description;
+}
+h2 {
+    display: none;
+    pointer-events: none;
+    animation: bg-move 0.3s forwards;
+}
+#slide1:checked ~ .desc > #text1 {
+    display: block;
+    transform: translateX(0%);
+}
+#slide2:checked ~ .desc > #text2 {
+    display: block;
+    transform: translateX(0%);
+}
+#slide3:checked ~ .desc > #text3 {
+    display: block;
+    transform: translateX(0%);
+}
+#slide4:checked ~ .desc > #text4 {
+    display: block;
+    transform: translateX(0%);
+}
+
+.bullets {
+    grid-area: bullets;
+    display: flex;
+    gap: 0.3rem;
+    justify-content: flex-end;
+}
+#slide1:checked ~ .bullets > #label1::before,
+#slide2:checked ~ .bullets > #label2::before,
+#slide3:checked ~ .bullets > #label3::before,
+#slide4:checked ~ .bullets > #label4::before {
+    background-color: transparent;
+    border: var(--bullet-default-color) solid 0.2rem;
+}
+
+#slide1:hover ~ .bullets > #label1::before,
+#slide2:hover ~ .bullets > #label2::before,
+#slide3:hover ~ .bullets > #label3::before,
+#slide4:hover ~ .bullets > #label4::before {
+    background-color: var(--bullet-checked-color);
+}
+
+#slide1:focus ~ .bullets > #label1::before,
+#slide2:focus ~ .bullets > #label2::before,
+#slide3:focus ~ .bullets > #label3::before,
+#slide4:focus ~ .bullets > #label4::before,
+#slide1:active ~ .bullets > #label1::before,
+#slide2:active ~ .bullets > #label2::before,
+#slide3:active ~ .bullets > #label3::before,
+#slide4:active ~ .bullets > #label4::before{
+    background-color: var(--bullet-active-color);
+}
+
+#slide1:checked:hover ~ .bullets > #label1::before,
+#slide2:checked:hover ~ .bullets > #label2::before,
+#slide3:checked:hover ~ .bullets > #label3::before,
+#slide4:checked:hover ~ .bullets > #label4::before {
+    background-color: transparent;
+    border: var(--bullet-checked-color) solid 0.2rem;
+}
+
+@media screen and (max-width: 768px){
+    .memes {
+        grid-template-columns: 100%;
+        grid-template-areas: "mem" "bullets" "description";
+        justify-items: center;
+    }
+    footer {
+        flex-direction: column;
+        align-items: center;
+    }
+    .desc {
+        justify-self: flex-start;
+    }
+}
