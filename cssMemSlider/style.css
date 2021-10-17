@@ -19,9 +19,8 @@ body {
     justify-content: space-between;
 }
 h1 {
-    visibility: hidden;
-    height: 0;
-    width: 0;
+    text-align: center;
+    margin-top: 5vh;
 }
 footer {
     margin: 0 auto;
